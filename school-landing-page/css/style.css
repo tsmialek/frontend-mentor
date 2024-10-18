@@ -1,1 +1,4 @@
 @import url('./global/boilerplate.css');
+@import url('./global/fonts.css');
+@import url('./global/button.css');
+@import url('./components/header.css');
