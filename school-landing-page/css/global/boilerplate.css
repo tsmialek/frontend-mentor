@@ -37,7 +37,7 @@ h3 {
 p {
   color: var(--color-grey);
   line-height: 1.5;
-  max-width: 50ch;
+  max-width: 35ch;
 }
 
 img {

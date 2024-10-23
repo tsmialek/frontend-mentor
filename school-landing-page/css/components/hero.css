@@ -19,6 +19,7 @@
   justify-self: center;
   margin-left: -20px;
   margin-right: -20px;
+  pointer-events: none;
 }
 
 @media (width >= 50.625rem) {
@@ -43,4 +44,12 @@
 }
 
 @media (width >= 75rem) {
+  .hero picture {
+    max-width: 65rem;
+    translate: 47% -27%;
+  }
+
+  .hero__text {
+    padding-block: 6.875rem;
+  }
 }
