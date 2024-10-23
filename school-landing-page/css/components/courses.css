@@ -1,0 +1,30 @@
+.courses {
+  background: linear-gradient(#fff, #f0f1ff);
+}
+
+.courses .block.title {
+  padding: 32px;
+  background: var(--gradient-pink);
+  color: var(--color-white);
+}
+
+.courses h2 {
+  font-size: var(--fs-3);
+}
+
+.courses .h3 {
+  font-size: var(--fs-4);
+}
+
+.courses p {
+  font-size: var(--fs-5);
+}
+
+.courses .block {
+  padding: 64px 32px 40px;
+  border-radius: 15px;
+}
+
+.courses .course {
+  background: var(--color-white);
+}
