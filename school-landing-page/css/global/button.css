@@ -19,11 +19,17 @@
   color: var(--color-white);
 }
 
+.button.purple {
+  background: var(--gradient-purple);
+  color: var(--color-white);
+}
+
 .button.dark:hover {
   background: var(--color-blue-600);
 }
 
-.button.pink:hover {
+.button.pink:hover,
+.button.purple:hover {
   opacity: 0.5;
 }
 

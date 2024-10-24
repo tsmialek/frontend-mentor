@@ -5,7 +5,7 @@
   padding-block: 1rem;
 }
 
-.header .logo {
+.logo {
   width: 5rem;
 }
 
@@ -16,7 +16,7 @@
 }
 
 @media (width >= 75rem) {
-  .header .logo {
+  .logo {
     width: 6.9375rem;
   }
 }

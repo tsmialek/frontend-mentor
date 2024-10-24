@@ -1,5 +1,17 @@
 .courses {
-  background: linear-gradient(#fff, #f0f1ff);
+  background: linear-gradient(#fff, #f0f1ff 35%);
+  padding-block: 64px 80px;
+}
+
+.courses .wrapper {
+  display: grid;
+  row-gap: 60px;
+}
+
+.courses img {
+  position: absolute;
+  top: 0;
+  translate: 32px -50%;
 }
 
 .courses .block.title {
@@ -18,6 +30,19 @@
 
 .courses p {
   font-size: var(--fs-5);
+  margin: 0;
+}
+
+.courses a {
+  font-size: var(--fs-7);
+  font-weight: 700;
+  color: var(--color-pink-600);
+  transition: opacity 150ms eqse-in-out;
+  align-self: end;
+}
+
+.courses a:hover {
+  opacity: 0.5;
 }
 
 .courses .block {
@@ -26,5 +51,31 @@
 }
 
 .courses .course {
+  display: grid;
+  position: relative;
   background: var(--color-white);
+  gap: 24px;
+  grid-template-rows: min-content 1fr min-content;
+}
+
+@media (width >= 50.625rem) {
+  .courses .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+  }
+
+  .courses .block.title {
+    padding-block-start: 64px;
+  }
+}
+
+@media (width >= 75rem) {
+  .courses .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 84px 32px;
+  }
+
+  .courses .block.title {
+    padding-block-start: 64px;
+  }
 }
