@@ -1,0 +1,52 @@
+:root {
+  --gradient-purple-light: linear-gradient(
+    hsl(252, 100%, 67%),
+    hsl(241, 81%, 54%)
+  );
+  --gradient-purple-dark: linear-gradient(
+    hsl(256, 71%, 46%) 0%,
+    hsl(241, 71%, 46%, 0%) 100%
+  );
+  --yellow: hsl(40, 100%, 56%);
+  --green: hsl(166, 100%, 37%);
+  --red: hsl(0, 100%, 67%);
+  --blue: hsl(234, 85%, 45%);
+  --dark-navy: hsl(233, 30%, 27%);
+  --light-blue: hsl(241, 100%, 89%);
+  --very-ligh-blue: hsl(220, 100%, 96%);
+  --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Hanken Grotesk, sans-serif;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
