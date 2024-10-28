@@ -3,7 +3,7 @@
     <h3 class="light-blue">Your Result</h3>
     <div class="circle">
       <h1>76</h1>
-      <p class="light-blue">of 100</p>
+      <p class="light-blue" style="opacity: 0.5">of 100</p>
     </div>
     <h2>Great</h2>
     <p class="light-blue">
@@ -21,7 +21,7 @@ section {
   background: var(--gradient-purple-light);
   color: var(--white);
   text-align: center;
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 32px 32px;
 }
 
 .circle {
@@ -41,6 +41,10 @@ section {
   font-size: 56px;
 }
 
+h2 {
+  font-weight: 600;
+}
+
 .circle p {
   position: absolute;
   margin-block: 0;
@@ -55,18 +59,9 @@ section {
 }
 
 p {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-block: 0 0;
   margin-inline: auto;
   max-width: 35ch;
   padding-bottom: 40px;
-}
-
-h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  padding-block: 1.5rem;
 }
 
 h2 {
