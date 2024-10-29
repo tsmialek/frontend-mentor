@@ -7,7 +7,7 @@
     }"
   >
     <div class="detail__description">
-      <img :src="detailData.icon" />
+      <img :src="getImagePath(detailData.icon)" />
       {{ detailData.category }}
     </div>
     <div class="detail__score">
@@ -22,6 +22,11 @@ export default {
   props: ['detailData'],
   data() {
     return {};
+  },
+  methods: {
+    getImagePath(iconName) {
+      return new URL(`../assets/images/${iconName}`, import.meta.url).href;
+    },
   },
 };
 </script>
@@ -38,6 +43,11 @@ export default {
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
+}
+
+.detail__description {
+  display: flex;
+  gap: 8px;
 }
 
 .dark-navy {

@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     async loadDetailsData() {
-      let res = await fetch('/data.json');
+      let res = await fetch('data.json');
       let data = await res.json();
 
       this.detailsData = data;
