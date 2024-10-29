@@ -8,16 +8,18 @@
         :detail-data="detail"
       />
     </div>
-    <button>Continue</button>
+    <ButtonItem :button-text="'Continue'" :color-variable="'--dark-navy'" />
   </section>
 </template>
 
 <script>
 import DetailBar from './DetailBar.vue';
+import ButtonItem from './ButtonItem.vue';
 
 export default {
   components: {
     DetailBar,
+    ButtonItem,
   },
   data() {
     return {
@@ -52,5 +54,15 @@ section {
 h3 {
   color: var(--dark-navy);
   padding-block: 1.5rem;
+}
+
+@media (width >= 810px) {
+  section {
+    padding-inline: 40px;
+  }
+  h3 {
+    font-size: var(--fs-heading-m);
+    padding-block: 36px 28px;
+  }
 }
 </style>
