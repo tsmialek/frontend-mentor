@@ -68,6 +68,40 @@ h2 {
   padding-block: 24px 8px;
 }
 
-@media (width >= 50.625rem) {
+@media (width >= 810px) {
+  section {
+    border-radius: 32px;
+    padding-inline: 54px;
+    height: 100%;
+  }
+
+  p {
+    max-width: 25ch;
+    padding-bottom: 46px;
+    font-size: var(--fs-body);
+  }
+
+  .circle h1 {
+    font-size: var(--fs-heading-xl);
+  }
+
+  .circle p {
+    translate: -50% -150%;
+  }
+
+  h2 {
+    padding-block: 28px 14px;
+    font-size: var(--fs-heading-l);
+  }
+
+  h3 {
+    padding-block: 38px;
+    font-size: var(--fs-heading-m);
+  }
+
+  .circle {
+    width: 200px;
+    height: 200px;
+  }
 }
 </style>

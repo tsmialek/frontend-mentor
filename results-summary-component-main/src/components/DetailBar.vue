@@ -19,7 +19,12 @@
 
 <script>
 export default {
-  props: ['detailData'],
+  props: {
+    detailData: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {};
   },
@@ -47,10 +52,17 @@ export default {
 
 .detail__description {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .dark-navy {
   color: var(--dark-navy);
+}
+
+@media (width >= 810px) {
+  .detail {
+    min-width: 300px;
+    font-size: var(--fs-body);
+  }
 }
 </style>

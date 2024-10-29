@@ -1,7 +1,9 @@
 <template>
   <!-- ToDo: rename the component -->
-  <LargeLeftSection />
-  <DetailsRightSection />
+  <main>
+    <LargeLeftSection />
+    <DetailsRightSection />
+  </main>
 </template>
 
 <script>
@@ -16,4 +18,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (width >= 810px) {
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border-radius: 32px;
+  }
+}
+</style>
