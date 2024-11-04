@@ -1,4 +1,10 @@
-<template>Hello world</template>
+<template>
+  <main>
+    <!-- Desserts -->
+    <!-- *CardsComponents -->
+    <!-- CartComponent -->
+  </main>
+</template>
 
 <script setup></script>
 

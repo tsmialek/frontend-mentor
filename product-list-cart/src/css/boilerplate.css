@@ -37,6 +37,12 @@
   --spacing-400: 2rem;
   --spacing-500: 2.5rem;
   --spacing-1100: 5.5rem;
+
+  /* media: 
+    0 - 750px: mobile 46.875rem
+    740 - 1200px: tablet 75rem
+    1200px < : desktop
+  */
 }
 
 *,
@@ -58,5 +64,6 @@ svg {
 
 body {
   font-family: var(--font-family-default);
-  font-weight: 400;
+  font-size: var(--fs-500);
+  color: var(--rose-900);
 }
