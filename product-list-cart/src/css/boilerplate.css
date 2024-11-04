@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('../assets/fonts/RedHatText-VariableFont_wght.ttf')
+    format('truetype');
+}
+
+:root {
+  --clr-red: hsl(14, 86%, 42%);
+  --clr-rose-900: hsl(14, 65%, 9%);
+  --clr-rose-500: hsl(12, 20%, 44%);
+  --clr-rose-400: hsl(7, 20%, 60%);
+  --clr-rose-300: hsl(14, 25%, 72%);
+  --clr-rose-100: hsl(13, 31%, 94%);
+  --clr-rose-50: hsl(20, 50%, 98%);
+  --clr-green: hsl(159, 69%, 38%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --font-family-default: 'Red Hat Text', sans-serif;
+
+  --fw-regular: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 700;
+
+  --fs-400: 0.875rem;
+  --fs-500: 1rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2.5rem;
+
+  --spacing-50: 0.25rem;
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-1100: 5.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-family-default);
+  font-weight: 400;
+}
