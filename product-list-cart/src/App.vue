@@ -8,17 +8,19 @@
         :dessert="desser"
       />
     </div>
-    <!-- CartComponent -->
+    <CartSummary />
     <!-- ConfirmOrderModal -->
   </main>
 </template>
 
 <script>
 import CardComponent from './components/CardComponent.vue';
+import CartSummary from './components/CartSummary.vue';
 
 export default {
   components: {
     CardComponent,
+    CartSummary,
   },
   data() {
     return {
