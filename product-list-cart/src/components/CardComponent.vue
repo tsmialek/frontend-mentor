@@ -4,18 +4,30 @@
       <picture>
         <source
           media="(min-width: 46.875rem)"
-          :srcset="getImageUrl('tablet')"
+          :srcset="getImageUrl(dessert.image['tablet'])"
         />
-        <source media="(min-width: 75rem)" :srcset="getImageUrl('desktop')" />
-        <img :src="getImageUrl('mobile')" alt="dessert" width="654" />
+        <source
+          media="(min-width: 75rem)"
+          :srcset="getImageUrl(dessert.image['desktop'])"
+        />
+        <img
+          :src="getImageUrl(dessert.image['mobile'])"
+          alt="dessert"
+          width="654"
+        />
       </picture>
-      <button>Add to cart</button>
+      <ButtonComponent
+        type="secondary"
+        icon="icon-add-to-cart.svg"
+        textContent="Add to Cart"
+        class="semi-bold"
+      />
     </div>
     <div class="card__text">
       <p>{{ dessert.category }}</p>
       <h3>{{ dessert.name }}</h3>
       <p>
-        <span class="red">
+        <span class="red semi-bold">
           {{ formattedPrice }}
         </span>
       </p>
@@ -24,7 +36,13 @@
 </template>
 
 <script>
+import { getImageUrl } from '../utils.js';
+import ButtonComponent from './ButtonComponent.vue';
+
 export default {
+  components: {
+    ButtonComponent,
+  },
   props: {
     dessert: {
       type: Object,
@@ -44,12 +62,7 @@ export default {
     },
   },
   methods: {
-    getImageUrl(type) {
-      return new URL(
-        `../assets/images/${this.dessert.image[type]}`,
-        import.meta.url
-      ).href;
-    },
+    getImageUrl,
   },
 };
 </script>
