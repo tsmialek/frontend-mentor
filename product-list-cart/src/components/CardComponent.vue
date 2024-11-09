@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { getImageUrl } from '../utils.js';
+import { getImageUrl, formatPrice } from '../utils.js';
 import ButtonComponent from './ButtonComponent.vue';
 
 export default {
@@ -55,10 +55,7 @@ export default {
   },
   computed: {
     formattedPrice() {
-      return Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(this.dessert.price);
+      return formatPrice(this.dessert.price);
     },
   },
   methods: {
@@ -71,6 +68,10 @@ export default {
 .card {
   display: grid;
   row-gap: var(--spacing-400);
+}
+
+.card p {
+  font-size: var(--fs-400);
 }
 
 .card__img__button {

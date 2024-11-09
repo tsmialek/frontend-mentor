@@ -1,14 +1,12 @@
 <template>
   <main>
     <h1>Desserts</h1>
-    <div class="card-container">
-      <CardComponent
-        v-for="(desser, index) in dessertsData"
-        :key="index"
-        :dessert="desser"
-      />
-    </div>
-    <CartSummary />
+    <CardComponent
+      v-for="(desser, index) in dessertsData"
+      :key="index"
+      :dessert="desser"
+    />
+    <CartSummary class="cart" />
     <!-- ConfirmOrderModal -->
   </main>
 </template>
@@ -45,14 +43,27 @@ export default {
 main {
   display: grid;
   row-gap: var(--spacing-400);
-}
-
-.card-container {
-  display: grid;
-  row-gap: var(--spacing-300);
+  column-gap: var(--spacing-400);
+  grid-template-columns: 1fr;
 }
 
 h1 {
   font-weight: var(--fw-bold);
+  grid-column: span 3;
+  justify-self: start;
+}
+
+@media (min-width: 46.875rem) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    row-gap: var(--spacing-400);
+  }
+}
+
+@media (min-width: 75rem) {
+  main {
+  }
 }
 </style>
