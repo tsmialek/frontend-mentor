@@ -105,12 +105,6 @@ body {
   font-weight: var(--fw-semi-bold);
 }
 
-main {
-  padding-block: var(--spacing-300);
-  margin-inline: auto;
-  width: fit-content;
-}
-
 .button {
   border-radius: 999px;
   display: inline-flex;
@@ -118,6 +112,7 @@ main {
   padding: 12px 28px;
   gap: var(--spacing-100);
   font-size: var(--fs-400);
+  text-wrap: nowrap;
 }
 
 .text-rose-900 {

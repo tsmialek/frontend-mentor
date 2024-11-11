@@ -10,11 +10,7 @@
           media="(min-width: 75rem)"
           :srcset="getImageUrl(dessert.image['desktop'])"
         />
-        <img
-          :src="getImageUrl(dessert.image['mobile'])"
-          alt="dessert"
-          width="654"
-        />
+        <img :src="getImageUrl(dessert.image['mobile'])" alt="dessert" />
       </picture>
       <ButtonComponent
         type="secondary"
@@ -97,17 +93,10 @@ export default {
 
 @media (min-width: 46.875rem) {
   .card {
-    width: min-content;
-  }
-
-  .card img {
-    max-width: 212px;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 75rem) {
-  .card img {
-    max-width: 240px;
-  }
 }
 </style>

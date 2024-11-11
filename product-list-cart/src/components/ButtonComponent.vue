@@ -1,7 +1,7 @@
 <template>
   <button :class="`button button-${type}`" :style="customStyle">
     <span v-if="icon" class="button__icon">
-      <img :src="getImageUrl(icon)" :alt="icon" />
+      <img :src="getImageUrl(icon)" :alt="icon" width="24px" />
     </span>
     <span class="button__text">{{ textContent }}</span>
   </button>
@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+img {
+  min-width: 20px;
+}
 .button-primary {
   color: var(--clr-white);
   background-color: var(--clr-red);

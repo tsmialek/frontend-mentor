@@ -8,6 +8,10 @@
       <CartSummaryRow />
       <CartSummaryRow />
       <CartSummaryRow />
+      <CartSummaryRow />
+      <CartSummaryRow />
+      <CartSummaryRow />
+      <CartSummaryRow />
     </div>
     <div class="cart__total">
       <p class="text-rose-900">Order Total</p>
@@ -76,8 +80,8 @@ export default {
   border-radius: var(--spacing-150);
   display: grid;
   row-gap: var(--spacing-300);
-  grid-column: span 3;
   width: 100%;
+  height: fit-content;
 }
 
 .cart p {
@@ -88,6 +92,8 @@ export default {
 .cart__items {
   display: grid;
   row-gap: var(--spacing-200);
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .cart__total {
@@ -104,5 +110,17 @@ export default {
   background: var(--clr-rose-50);
   border-radius: var(--spacing-100);
   gap: var(--spacing-100);
+}
+
+@media (min-width: 46.875rem) {
+}
+
+@media (min-width: 75rem) {
+  .cart {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    position: sticky;
+    top: var(--spacing-300);
+  }
 }
 </style>
