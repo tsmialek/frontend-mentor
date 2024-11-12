@@ -17,6 +17,14 @@
         icon="icon-add-to-cart.svg"
         textContent="Add to Cart"
         class="semi-bold"
+        :on-click="() => addToCart(dessert)"
+        v-if="!cart[dessert.name]"
+      />
+      <ButtonQuantity
+        v-else
+        :quantity="cart[dessert.name].quantity"
+        :increment="() => addToCart(dessert)"
+        :decrement="() => removeFromCart(dessert)"
       />
     </div>
     <div class="card__text">
@@ -34,10 +42,12 @@
 <script>
 import { getImageUrl, formatPrice } from '../utils.js';
 import ButtonComponent from './ButtonComponent.vue';
+import ButtonQuantity from './ButtonQuantity.vue';
 
 export default {
   components: {
     ButtonComponent,
+    ButtonQuantity,
   },
   props: {
     dessert: {
