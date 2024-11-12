@@ -3,12 +3,19 @@
     <h1>Desserts</h1>
     <div class="card__container">
       <CardComponent
-        v-for="(desser, index) in dessertsData"
+        v-for="(dessert, index) in dessertsData"
         :key="index"
-        :dessert="desser"
+        :dessert="dessert"
+        :add-to-cart="addDessertToCart"
+        :remove-from-cart="removeDessertFromCart"
+        :cart="cart"
       />
     </div>
-    <CartSummary class="cart" />
+    <CartSummary
+      class="cart"
+      :cart-items="cart"
+      :remove-all-dessert-type-from-cart="removeAllDessertTypeFromCart"
+    />
     <!-- ConfirmOrderModal -->
   </main>
 </template>
@@ -24,7 +31,7 @@ export default {
   },
   data() {
     return {
-      cart: [],
+      cart: {},
       dessertsData: [],
     };
   },
@@ -33,6 +40,28 @@ export default {
       let res = await fetch('/data/data.json');
       this.dessertsData = await res.json();
       console.log(this.dessertsData);
+    },
+    addDessertToCart(dessert) {
+      if (this.cart[dessert.name]) {
+        this.cart[dessert.name].quantity++;
+      } else {
+        this.cart[dessert.name] = {
+          ...dessert,
+          quantity: 1,
+        };
+      }
+      console.log(this.cart);
+    },
+    removeDessertFromCart(dessert) {
+      if (this.cart[dessert.name].quantity > 1) {
+        this.cart[dessert.name].quantity -= 1;
+      } else {
+        delete this.cart[dessert.name];
+      }
+      console.log(this.cart);
+    },
+    removeAllDessertTypeFromCart(dessertName) {
+      delete this.cart[dessertName];
     },
   },
   mounted() {

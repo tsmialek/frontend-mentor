@@ -1,23 +1,26 @@
 <template>
+  <!-- Adjust the cart summary to reuse it in Modal
+   - conditionally displaying carbon-neutral badge
+   - passing main-img
+   - passing summary row type
+   - passing helper-text (figure out better name for it)
+   - use provide / inject to pass the cartItems and other props
+   -->
   <div class="cart">
-    <h2 class="red bold">Your Cart</h2>
-    <div class="cart__items">
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
-      <CartSummaryRow />
+    <h2 class="red bold">Your Cart ({{ cartContent }})</h2>
+    <div class="cart__items" v-if="Object.keys(cartItems).length > 0">
+      <CartSummaryRow
+        v-for="(item, idx) in Object.values(cartItems)"
+        :remove-all-dessert-type-from-cart="removeAllDessertTypeFromCart"
+        :key="idx"
+        :cart-item="item"
+      />
     </div>
-    <div class="cart__total">
+    <div class="cart__total" v-if="Object.keys(cartItems).length > 0">
       <p class="text-rose-900">Order Total</p>
-      <h2 class="bold">{{ formattedPrice }}</h2>
+      <h2 class="bold">{{ totalPrice }}</h2>
     </div>
-    <div class="carbon__badge">
+    <div class="carbon__badge" v-if="Object.keys(cartItems).length > 0">
       <img
         src="../assets/images/icon-carbon-neutral.svg"
         alt="Carbon Neutral"
@@ -29,10 +32,18 @@
       </p>
     </div>
     <ButtonComponent
+      v-if="Object.keys(cartItems).length > 0"
       :custom-style="customConfirmOrderButtonStyle"
       type="primary"
       textContent="Confirm Order"
     />
+    <div v-if="Object.keys(cartItems).length == 0" class="cart__empty">
+      <img
+        src="../assets/images/illustration-empty-cart.svg"
+        alt="Empty Cart"
+      />
+      <p>Your added items will appear here</p>
+    </div>
   </div>
 </template>
 
@@ -48,10 +59,14 @@ export default {
   },
   props: {
     cartItems: {
-      type: Array,
+      type: Object,
       default() {
-        return [];
+        return ['hello'];
       },
+    },
+    removeAllDessertTypeFromCart: {
+      type: Function,
+      required: true,
     },
   },
   data() {
@@ -66,8 +81,18 @@ export default {
     };
   },
   computed: {
-    formattedPrice() {
-      return formatPrice(46.5);
+    totalPrice() {
+      let total = 0;
+      for (const item of Object.values(this.cartItems)) {
+        total += item.price * item.quantity;
+      }
+      return formatPrice(total);
+    },
+    cartContent() {
+      return Object.values(this.cartItems).reduce(
+        (acc, item) => acc + item.quantity,
+        0
+      );
     },
   },
 };
@@ -94,6 +119,18 @@ export default {
   row-gap: var(--spacing-200);
   max-height: 500px;
   overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clr-rose-100) var(--clr-white);
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+}
+
+.cart__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-300);
 }
 
 .cart__total {

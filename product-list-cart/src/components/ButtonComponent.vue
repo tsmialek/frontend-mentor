@@ -1,5 +1,9 @@
 <template>
-  <button :class="`button button-${type}`" :style="customStyle">
+  <button
+    :class="`button button-${type}`"
+    :style="customStyle"
+    @click="onClick"
+  >
     <span v-if="icon" class="button__icon">
       <img :src="getImageUrl(icon)" :alt="icon" width="24px" />
     </span>
@@ -31,6 +35,12 @@ export default {
         return {};
       },
     },
+    onClick: {
+      type: Function,
+      default() {
+        return () => console.log('Button clicked');
+      },
+    },
   },
   methods: {
     getImageUrl,
@@ -48,8 +58,16 @@ img {
   border: none;
 }
 
+.button-primary:hover {
+  opacity: 0.8;
+}
+
 .button-secondary {
   background-color: var(--clr-white);
   border: 1px solid var(--clr-rose-400);
+}
+
+.button-secondary:hover {
+  color: var(--clr-red);
 }
 </style>

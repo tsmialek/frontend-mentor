@@ -58,6 +58,18 @@ export default {
         };
       },
     },
+    addToCart: {
+      type: Function,
+      required: true,
+    },
+    removeFromCart: {
+      type: Function,
+      required: true,
+    },
+    cart: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
     formattedPrice() {

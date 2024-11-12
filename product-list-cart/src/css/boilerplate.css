@@ -113,6 +113,8 @@ body {
   gap: var(--spacing-100);
   font-size: var(--fs-400);
   text-wrap: nowrap;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
 }
 
 .text-rose-900 {
