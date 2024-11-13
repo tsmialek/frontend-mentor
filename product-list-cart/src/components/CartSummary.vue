@@ -1,11 +1,4 @@
 <template>
-  <!-- Adjust the cart summary to reuse it in Modal
-   - conditionally displaying carbon-neutral badge
-   - passing main-img
-   - passing summary row type
-   - passing helper-text (figure out better name for it)
-   - use provide / inject to pass the cartItems and other props
-   -->
   <div class="cart">
     <h2 class="red bold">Your Cart ({{ cartContent }})</h2>
     <div class="cart__items" v-if="Object.keys(cartItems).length > 0">

@@ -8,7 +8,6 @@
         :dessert="dessert"
         :add-to-cart="addDessertToCart"
         :remove-from-cart="removeDessertFromCart"
-        :cart="cart"
       />
     </div>
     <CartSummary
@@ -16,23 +15,29 @@
       :cart-items="cart"
       :remove-all-dessert-type-from-cart="removeAllDessertTypeFromCart"
     />
-    <!-- ConfirmOrderModal -->
   </main>
 </template>
 
 <script>
 import CardComponent from './components/CardComponent.vue';
 import CartSummary from './components/CartSummary.vue';
+import OrderSummaryModal from './components/OrderSummaryModal.vue';
 
 export default {
   components: {
     CardComponent,
     CartSummary,
+    OrderSummaryModal,
   },
   data() {
     return {
       cart: {},
       dessertsData: [],
+    };
+  },
+  provide() {
+    return {
+      cart: this.cart,
     };
   },
   methods: {
@@ -62,6 +67,12 @@ export default {
     },
     removeAllDessertTypeFromCart(dessertName) {
       delete this.cart[dessertName];
+    },
+    openModal() {
+      this.modalOpen = true;
+    },
+    closeModal() {
+      this.modalOpen = false;
     },
   },
   mounted() {

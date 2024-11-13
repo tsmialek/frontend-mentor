@@ -66,16 +66,13 @@ export default {
       type: Function,
       required: true,
     },
-    cart: {
-      type: Object,
-      required: true,
-    },
   },
   computed: {
     formattedPrice() {
       return formatPrice(this.dessert.price);
     },
   },
+  inject: ['cart'],
   methods: {
     getImageUrl,
   },
