@@ -29,6 +29,7 @@
       :custom-style="customConfirmOrderButtonStyle"
       type="primary"
       textContent="Confirm Order"
+      :on-click="() => (modalOpen = true)"
     />
     <div v-if="Object.keys(cartItems).length == 0" class="cart__empty">
       <img
@@ -37,18 +38,21 @@
       />
       <p>Your added items will appear here</p>
     </div>
+    <OrderSummaryModal :is-open="modalOpen" @close="modalOpen = false" />
   </div>
 </template>
 
 <script>
 import ButtonComponent from './ButtonComponent.vue';
-import { formatPrice } from '../utils.js';
 import CartSummaryRow from './CartSummaryRow.vue';
+import OrderSummaryModal from './OrderSummaryModal.vue';
+import { formatPrice } from '../utils.js';
 
 export default {
   components: {
     ButtonComponent,
     CartSummaryRow,
+    OrderSummaryModal,
   },
   props: {
     cartItems: {
@@ -71,7 +75,13 @@ export default {
         'padding-block': 'var(--spacing-200)',
         'font-size': 'var(--fs-500)',
       },
+      modalOpen: false,
     };
+  },
+  methods: {
+    closeModal(event) {
+      this.modalOpen = false;
+    },
   },
   computed: {
     totalPrice() {
