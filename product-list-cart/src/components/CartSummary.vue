@@ -1,14 +1,22 @@
 <template>
   <div class="cart">
     <h2 class="red bold">Your Cart ({{ cartContent }})</h2>
-    <div class="cart__items" v-if="Object.keys(cartItems).length > 0">
+    <transition-group
+      appear
+      v-autoHeight
+      name="slide"
+      tag="div"
+      ref="cartItemsRef"
+      v-show="Object.keys(cartItems).length > 0"
+      class="cart__items"
+    >
       <CartSummaryRow
-        v-for="(item, idx) in Object.values(cartItems)"
+        v-for="item in Object.values(cartItems)"
         :remove-all-dessert-type-from-cart="removeAllDessertTypeFromCart"
-        :key="idx"
+        :key="item.name"
         :cart-item="item"
       />
-    </div>
+    </transition-group>
     <div class="cart__total" v-if="Object.keys(cartItems).length > 0">
       <p class="text-rose-900">Order Total</p>
       <h2 class="bold">{{ totalPrice }}</h2>
@@ -31,13 +39,15 @@
       textContent="Confirm Order"
       :on-click="() => (modalOpen = true)"
     />
-    <div v-if="Object.keys(cartItems).length == 0" class="cart__empty">
-      <img
-        src="../assets/images/illustration-empty-cart.svg"
-        alt="Empty Cart"
-      />
-      <p>Your added items will appear here</p>
-    </div>
+    <TransitionItem>
+      <div v-if="Object.keys(cartItems).length == 0" class="cart__empty">
+        <img
+          src="../assets/images/illustration-empty-cart.svg"
+          alt="Empty Cart"
+        />
+        <p>Your added items will appear here</p>
+      </div>
+    </TransitionItem>
     <OrderSummaryModal :is-open="modalOpen" @close="modalOpen = false" />
   </div>
 </template>
@@ -46,13 +56,19 @@
 import ButtonComponent from './ButtonComponent.vue';
 import CartSummaryRow from './CartSummaryRow.vue';
 import OrderSummaryModal from './OrderSummaryModal.vue';
+import TransitionItem from './TransitionItem.vue';
 import { formatPrice } from '../utils.js';
+import { autoHeight } from '../directives/autoHeight.js';
 
 export default {
   components: {
     ButtonComponent,
     CartSummaryRow,
     OrderSummaryModal,
+    TransitionItem,
+  },
+  directives: {
+    autoHeight,
   },
   props: {
     cartItems: {
@@ -76,6 +92,7 @@ export default {
         'font-size': 'var(--fs-500)',
       },
       modalOpen: false,
+      cartItemsWrapperHeight: 0,
     };
   },
   methods: {
@@ -102,6 +119,21 @@ export default {
 </script>
 
 <style scoped>
+.slide-move,
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.slide-leave-active {
+  position: absolute;
+}
+
+.slide-leave-to,
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
 .cart {
   padding: var(--spacing-300);
   background: var(--clr-white);
@@ -117,15 +149,20 @@ export default {
   color: var(--clr-rose-900);
 }
 
+.cart__items-wrapper {
+  overflow: hidden;
+  height: auto;
+  transition: height 0.5s ease-in-out;
+}
+
 .cart__items {
-  display: grid;
-  row-gap: var(--spacing-200);
   max-height: 500px;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: var(--clr-rose-100) var(--clr-white);
   margin-inline: -1rem;
   padding-inline: 1rem;
+  transition: all 300ms ease-in-out;
 }
 
 .cart__empty {
