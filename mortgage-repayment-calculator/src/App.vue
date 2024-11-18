@@ -1,5 +1,11 @@
-<script setup lang="ts"></script>
+<template>
+  <main>
+    <FormComponent />
+  </main>
+</template>
 
-<template></template>
+<script setup lang="ts">
+import FormComponent from './components/FormComponent.vue';
+</script>
 
 <style scoped></style>

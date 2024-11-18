@@ -2,7 +2,7 @@
   font-family: 'Plus Jakarta Sans';
   font-display: swap;
   font-weight: 100 900;
-  src: url('../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf')
+  src: url('./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf')
     format('truetype');
 }
 
@@ -64,6 +64,15 @@ svg {
 }
 
 body {
+  font-family: var(--font-family-default);
+}
+
+.clr-slate-700 {
+  color: var(--clr-slate-700);
+}
+
+.clr-slate-900 {
+  color: var(--clr-slate-900);
 }
 
 .font-preset-5 {
@@ -82,19 +91,16 @@ body {
   font-size: 1.125rem;
   line-height: 1.25;
   font-weight: var(--fw-bold);
-  letter-spacing: -1px;
 }
 
 .font-preset-2 {
   font-size: 1.5rem;
   line-height: 1.25;
   font-weight: var(--fw-bold);
-  letter-spacing: -1px;
 }
 
 .font-preset-1 {
   font-size: 3.5rem;
   line-height: 1.5;
   font-weight: var(--fw-medium);
-  letter-spacing: -1px;
 }
