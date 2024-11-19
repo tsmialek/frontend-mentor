@@ -1,8 +1,8 @@
 <template>
-  <customInput__container>
+  <div class="customInput__container">
     <label
       v-if="label"
-      :class="[inputClasses?.labelColor, inputClasses?.labelTextPrest]"
+      :class="[inputClasses?.labelColor, inputClasses?.labelTextPreset]"
     >
       {{ label }}
     </label>
@@ -24,7 +24,7 @@
         {{ unit }}
       </div>
     </div>
-  </customInput__container>
+  </div>
 </template>
 
 <script setup lang="ts">

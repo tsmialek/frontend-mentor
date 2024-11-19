@@ -102,5 +102,15 @@ body {
 .font-preset-1 {
   font-size: 3.5rem;
   line-height: 1.5;
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-bold);
+}
+
+.button {
+  display: inline-flex;
+  gap: 0.875rem;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+  border-radius: 999px;
+  background-color: var(--clr-lime);
 }
