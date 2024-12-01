@@ -15,10 +15,10 @@ const results = ref<IResult>({});
 
 function calculateRepayment(data: IFormData): IResult {
   console.log(data);
-  const principal = data.amount;
-  const annualInterestRate = data.interest / 100;
+  const principal = data.amount ?? 0;
+  const annualInterestRate = (data.interest ?? 0) / 100;
   const monthlyInterestRate = annualInterestRate / 12;
-  const numberOfPayments = data.term;
+  const numberOfPayments = data.term ?? 0;
 
   let monthlyPayment = 0;
 
@@ -31,10 +31,11 @@ function calculateRepayment(data: IFormData): IResult {
   }
 
   console.log(monthlyPayment + ' ' + numberOfPayments);
-  return {
+  results.value = {
     monthly: monthlyPayment,
     total: monthlyPayment * numberOfPayments,
   };
+  return results.value;
 }
 </script>
 

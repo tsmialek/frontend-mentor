@@ -7,17 +7,29 @@
     </p>
     <div class="summary">
       <h2 class="font-preset-4 clr-slate-300">Your monthly repayments</h2>
-      <p class="monthly__repayments font-preset-1 clr-lime">&pound;420.50</p>
+      <p class="monthly__repayments font-preset-1 clr-lime">
+        &pound;{{ results.monthly }}
+      </p>
       <hr />
       <h2 class="font-preset-4 clr-slate-300">
         Total you'll repay over the term
       </h2>
-      <p class="total__repayment font-preset-2 clr-white">&pound; 69000.420</p>
+      <p class="total__repayment font-preset-2 clr-white">
+        &pound;{{ results.total }}
+      </p>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { IResult } from '../interfaces.ts';
+
+interface Props {
+  results: IResult;
+}
+
+const { results } = defineProps<Props>();
+</script>
 
 <style scoped>
 .results__component {

@@ -20,8 +20,8 @@ export interface IResult {
 }
 
 export interface IFormData {
-  amount: number;
-  term: number;
-  interest: number;
+  amount: number | null;
+  term: number | null;
+  interest: number | null;
   type: string;
 }

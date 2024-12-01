@@ -8,42 +8,69 @@
       type="number"
       unit="&pound;"
       label="Mortgage Amount"
-      v-model.number="mortgageAmount"
+      v-model.number="formData.amount"
       :input-classes="mortgageInputClasses"
     ></InputItem>
+    <span
+      style="color: red"
+      v-for="error in v$.amount.$errors"
+      :key="error.$uid"
+    >
+      {{ error.$message }}
+    </span>
     <InputItem
       type="number"
       unit="years"
       label="Mortgage Term"
-      v-model.number="mortgageTerm"
+      v-model.number="formData.term"
       :input-classes="mortgageTermInputClasses"
     ></InputItem>
+    <span style="color: red" v-for="error in v$.term.$errors" :key="error.$uid">
+      {{ error.$message }}
+    </span>
     <InputItem
       type="number"
       unit="&percnt;"
       label="Interest Rate"
-      v-model.number="interestRate"
+      v-model.number="formData.interest"
       :input-classes="interestRateInputClasses"
     ></InputItem>
+    <span
+      style="color: red"
+      v-for="error in v$.interest.$errors"
+      :key="error.$uid"
+    >
+      {{ error.$message }}
+    </span>
     <div class="radio__container">
       <p class="font-preset-4 clr-slate-700">Mortgage type</p>
       <RadioItem
         name="mortgage-type"
         id="repayment"
         label="Repayment"
-        v-model="mortgageType"
+        v-model="formData.type"
       ></RadioItem>
       <RadioItem
         name="mortgage-type"
         id="interest-only"
         label="Interest Only"
-        v-model="mortgageType"
+        v-model="formData.type"
       ></RadioItem>
+      <span
+        style="color: red"
+        v-for="error in v$.type.$errors"
+        :key="error.$uid"
+      >
+        {{ error.$message }}
+      </span>
     </div>
     <div class="button form__submit font-preset-3" @click="submitForm">
       <img src="../assets/images/icon-calculator.svg" alt="calculator icon" />
       Calculate Repayments
     </div>
+  </div>
+  <div v-for="(error, idx) in v$.errors" :key="idx">
+    {{ error.$property }}: {{ error.$message }}
   </div>
 </template>
 
@@ -52,8 +79,28 @@ import { ref } from 'vue';
 import { IFormData, IInputType } from '../interfaces.ts';
 import InputItem from './InputItem.vue';
 import RadioItem from './RadioItem.vue';
+import useVuelidate from '@vuelidate/core';
+import { required, numeric, not, sameAs } from '@vuelidate/validators';
 
-const mortgageAmount = ref();
+const rules = {
+  amount: {
+    required,
+    numeric,
+    not: not(sameAs(0)),
+  },
+  term: {
+    required,
+    numeric,
+    not: not(sameAs(0)),
+  },
+  interest: {
+    required,
+    numeric,
+    not: not(sameAs(0)),
+  },
+  type: { required },
+};
+
 const mortgageInputClasses: IInputType = {
   labelColor: 'clr-slate-700',
   labelTextPreset: 'font-preset-4',
@@ -62,36 +109,28 @@ const mortgageInputClasses: IInputType = {
   unitColor: 'clr-slate-900',
   unitPosition: 'left',
 };
-
-const mortgageTerm = ref();
 const mortgageTermInputClasses: IInputType = {
   ...mortgageInputClasses,
   unitPosition: 'right',
 };
-const interestRate = ref();
 const interestRateInputClasses: IInputType = {
   ...mortgageTermInputClasses,
 };
 
-const mortgageType = ref();
+const formData = ref<IFormData>({
+  amount: null,
+  term: null,
+  interest: null,
+  type: '',
+});
+const v$ = useVuelidate(rules, formData);
 
 // submitting form
 const emit = defineEmits(['calculateRepayment']);
-const formData = ref<IFormData>({
-  amount: mortgageAmount.value,
-  term: mortgageTerm.value,
-  interest: interestRate.value,
-  type: mortgageType.value,
-});
-
-function submitForm() {
-  formData.value = {
-    amount: mortgageAmount.value,
-    term: mortgageTerm.value,
-    interest: interestRate.value,
-    type: mortgageType.value,
-  };
-  emit('calculateRepayment', formData.value);
+async function submitForm() {
+  const result = await v$.value.$validate();
+  if (!result) return;
+  else emit('calculateRepayment', formData.value);
 }
 </script>
 
