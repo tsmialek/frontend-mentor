@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf')
+    format('truetype');
+}
+
+:root {
+  --clr-red: hsl(4, 69%, 50%);
+  --clr-lime: hsl(61, 70%, 52%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-slate-100: hsl(202, 86%, 94%);
+  --clr-slate-300: hsl(203, 41%, 72%);
+  --clr-slate-500: hsl(200, 26%, 54%);
+  --clr-slate-700: hsl(200, 24%, 40%);
+  --clr-slate-900: hsl(202, 55%, 16%);
+
+  --font-family-default: 'Plus Jakarta Sans', sans-serif;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  --spacing-100: 0.5rem;
+  --spacing-150: 0.75rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+
+  /* media: 
+    0 - 750px: mobile 46.875rem
+    740 - 1200px: tablet 75rem
+    1200px < : desktop
+  */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--fw-semi-bold);
+  line-height: 1.25;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-family-default);
+}
+
+.clr-slate-700 {
+  color: var(--clr-slate-700);
+}
+
+.clr-slate-900 {
+  color: var(--clr-slate-900);
+}
+
+.font-preset-5 {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: var(--fw-medium);
+}
+
+.font-preset-4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: var(--fw-medium);
+}
+
+.font-preset-3 {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  font-weight: var(--fw-bold);
+}
+
+.font-preset-2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: var(--fw-bold);
+}
+
+.font-preset-1 {
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: var(--fw-bold);
+}
+
+.button {
+  display: inline-flex;
+  gap: 0.875rem;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+  border-radius: 999px;
+  background-color: var(--clr-lime);
+}
